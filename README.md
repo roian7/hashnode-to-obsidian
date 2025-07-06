@@ -13,6 +13,8 @@ This tool is designed for **one-time migration** from Hashnode to Obsidian. It p
 There are plenty of Markdown-based static site generators that the Hashnode data could be exported to, so why choose Obsidian? None of the free solutions provide the blog authoring tools, Markdown editing with drag-and-drop images, image hosting, etc. You would have to go host images somewhere else first, then reference them in your Markdown.
 
 Obsidian privides an excellent writing experience with drag-and-drop images, and a slick interface for editing YML properties for SEO and CMS fields. Once posts written in Obsidian are ready to publish, there are a wide range of free and paid tools to publish notes as a web page, or you can build your own solution to push content to any other platform. 
+![Screenshot 2025-07-06 at 12 14 06 PM](https://github.com/user-attachments/assets/bfc18495-fd4d-4023-8781-641ef8fcbed1)
+
 
 In other words, this solution prioritizes replacing the Hashnode *writing experience*, and leaves it up to you to choose where to host next, and how to convert to the right format. For my blog, I'll be using 11ty, and writing a seprate tool to import from Obsidian. 
 
@@ -20,32 +22,40 @@ In other words, this solution prioritizes replacing the Hashnode *writing experi
 ## ⚡ Quick Start
 1. **Clone repository**
    ```bash
-   git clone <repo-url>
+   git clone https://github.com/GreenFlux/hashnode-to-obsidian.git
    cd hashnode-to-obsidian
    ```
 
-2. **Install dependencies**
+2. **Create and activate virtual environment**
+   ```bash
+   python -m venv venv
+   # On Windows:
+   venv\Scripts\activate
+   # On macOS/Linux:
+   source venv/bin/activate
+   ```
+3. **Install dependencies**
    ```bash
    pip install -r requirements.txt
    ```
 
-3. **Get Hashnode export**
+4. **Get Hashnode export**
    - Go to Hashnode Dashboard > Settings > Export
    - Download "Export all articles" JSON file
    - Place in project directory as `hashnode-export.json`
 
-4. **Set up API key** (optional but recommended)
+5. **Set up API key** (optional but recommended)
    ```bash
    cp .env.example .env
    # Edit .env and add your Hashnode API key from https://hashnode.com/settings/developer
    ```
 
-5. **Test run** (recommended first step)
+6. **Test run** (recommended first step)
    ```bash
    python h2o.py hashnode-export.json --limit 2 --skip-images --dry-run
    ```
 
-6. **Full conversion**
+7. **Full conversion**
    ```bash
    python h2o.py hashnode-export.json --output ./my-obsidian-vault
    ```
