@@ -9,10 +9,10 @@ venv/
 .venv/
 
 # Project specific
-hashnode-export.json
+#hashnode-export.json
 .env
 test-*/
-*-vault/
+#*-vault/
 *-obsidian/
 *.log
 
